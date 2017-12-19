@@ -11,6 +11,9 @@ class ApiSdkModel extends CI_Model {
             'where' => "app_id='".$arrParams['app_id']."'",
         ];
         $arrRet = $this->dbutil->getSdkData($arrWhere);
-        return $arrRet;
+        if($arrRet) {
+            return json_decode($arrRet[0]['data'], true);
+        }
+        return false;
     }
 }

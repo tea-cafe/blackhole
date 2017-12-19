@@ -16,7 +16,7 @@ class ApiSdkCfg extends MY_Controller {
             || !isset($arrParams['slot_id'])) {
             return $this->outJson([], ErrCode::ERR_INVALID_PARAMS);
         }
-        $strRet = $this->ApiSdkModel->getSdkCfgByAppId($arrParams);
-        return $strRet?$this->outJson($strRet, ErrCode::OK) : $this->outJson([], ErrCode::OK);
+        $arrRet = $this->ApiSdkModel->getSdkCfgByAppId($arrParams);
+        return $arrRet?$this->outJson($arrRet, ErrCode::OK) : $this->outJson([], ErrCode::ERR_SYSTEM);
     }
 }
