@@ -18,7 +18,7 @@ class ApiSdkCfg extends MY_Controller {
         }
         if($arrParams['app_id'] == '6bq3bpop'
             && $arrParams['slot_id'] == 'ganuxntb') {
-			echo '{
+			return '{
             "code": 0,
                 "msg": "OK",
                 "data": {
@@ -35,7 +35,6 @@ class ApiSdkCfg extends MY_Controller {
                     }
                 }
             }';
-            return;
         }
         $arrRet = $this->ApiSdkModel->getSdkCfgByAppId($arrParams);
         return $arrRet?$this->outJson($arrRet, ErrCode::OK) : $this->outJson([], ErrCode::ERR_SYSTEM);
