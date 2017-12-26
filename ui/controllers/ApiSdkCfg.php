@@ -16,12 +16,11 @@ class ApiSdkCfg extends MY_Controller {
             || !isset($arrParams['slot_id'])) {
             return $this->outJson([], ErrCode::ERR_INVALID_PARAMS);
         }
+
         if($arrParams['app_id'] == '6bq3bpop'
             && $arrParams['slot_id'] == 'ganuxntb') {
-			return '{
-            "code": 0,
-                "msg": "OK",
-                "data": {
+            $data = [];
+            $strEcho = '{
                 "ganuxntb": {
                     "strategy": {
                         "YEZI": 100
@@ -33,9 +32,11 @@ class ApiSdkCfg extends MY_Controller {
                             }
                         }
                     }
-                }
-            }';
+                }';
+            $data = json_decode($strEcho, true);
+            return $this->outJson($data, ErrCode::OK);
         }
+
         $arrRet = $this->ApiSdkModel->getSdkCfgByAppId($arrParams);
         return $arrRet?$this->outJson($arrRet, ErrCode::OK) : $this->outJson([], ErrCode::ERR_SYSTEM);
     }
