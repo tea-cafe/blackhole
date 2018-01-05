@@ -8,8 +8,9 @@ class ApiSession extends MY_Controller {
     public function genSession() {
 		$url = 'https://engine.lvehaisen.com/index/activity?appKey=%s&adslotId=%s&md=%s&timestamp=%s&nonce=%s&signature=%s';
         $arrParams = $this->input->get(NULL, true);
-        if(count($arrParams) != 4 
-            || !isset($arrParams['appKey']) 
+        //if(count($arrParams) != 4 
+        //    || !isset($arrParams['appKey']) 
+        if(!isset($arrParams['appKey']) 
             || !isset($arrParams['adslotId'])
             || !isset($arrParams['appSecret'])
             || !isset($arrParams['hb'])) {
@@ -19,6 +20,7 @@ class ApiSession extends MY_Controller {
 		$adslotId = $arrParams['adslotId'];
         $appSecret = $arrParams['appSecret'];
         $_md = base64_decode($arrParams['hb']);
+        
         if(is_null(json_decode($_md))) {
             return $this->outJson([], ErrCode::ERR_INVALID_PARAMS);
         }
@@ -28,6 +30,10 @@ class ApiSession extends MY_Controller {
         $strHash = "appSecret={$appSecret}&md={$md}&nonce={$nonce}&timestamp={$timestamp}";
 		$signature = sha1($strHash, false);
         $api_url = sprintf($url, $appKey, $adslotId, urlencode($md), $timestamp, $nonce, $signature);
+        if(isset($arrParams['device_id'])) {
+            $deviceid = $arrParams['device_id'];
+            $api_url = $api_url.'&device_id='.$deviceid;
+        }
         $this->load->library('Curl');
         $this->curl->create($api_url);
         $str = $this->curl->execute();
