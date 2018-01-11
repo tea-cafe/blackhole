@@ -17,7 +17,7 @@ class ApiGetQuestion extends MY_Controller {
         $strType = self::ARR_TYPES[mt_rand(0,3)];
         $arrQuestions = $this->config->item('activity_question');
         $arrQuestions = $arrQuestions[$strType];
-        $arrQuestion = $arrQuestions[mt_rand(0,count($arrQuestions))];
+        $arrQuestion = $arrQuestions[mt_rand(0,count($arrQuestions)-1)];
         if (mt_rand(0,1)) {
             $arrRes = [
                 'type' => $strType,
