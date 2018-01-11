@@ -24,7 +24,7 @@ class ApiGetQuestion extends MY_Controller {
                 'question' => $arrQuestion[0],
                 'A' => $arrQuestion[2],
                 'B' => $arrQuestion[1],
-                'search_url' => $arrQuestion[3] . '&ref=www_colorful&tn=iphone&from=1018279e',
+                'search_url' => $arrQuestion[3],
                 'r' => 'B',
             ];
         } else {
@@ -33,7 +33,7 @@ class ApiGetQuestion extends MY_Controller {
                 'question' => $arrQuestion[0],
                 'A' => $arrQuestion[1],
                 'B' => $arrQuestion[2],
-                'search_url' => $arrQuestion[3] . '&ref=www_colorful&tn=iphone&from=1018279e',
+                'search_url' => $arrQuestion[3],
                 'r' => 'A',
             ];
         }
