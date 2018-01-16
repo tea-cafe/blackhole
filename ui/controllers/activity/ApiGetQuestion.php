@@ -37,6 +37,6 @@ class ApiGetQuestion extends MY_Controller {
                 'r' => 'A',
             ];
         }
-        return $this->outJson($arrRes, ErrCode::OK);
+        echo $this->input->get('callback', true) . '(' . json_encode($arrRes) . ')';
     }
 }
