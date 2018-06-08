@@ -44,9 +44,9 @@ class ApiSdkCfg extends MY_Controller {
 					continue;
 				}elseif(array_key_exists('BAIDU',$value['map'])){
 					$arrRet[$key]['strategy']['GDT'] = 0;
-					$arrRet[$key]['strategy']['BAIDU'] = 0;
+					$arrRet[$key]['strategy']['BAIDU'] = 100;
 				}else{
-					$arrRet[$key]['strategy']['GDT'] = 0;
+					$arrRet[$key]['strategy']['GDT'] = 100;
 					$arrRet[$key]['strategy']['BAIDU'] = 0;
 				}
 			}
