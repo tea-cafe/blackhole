@@ -38,6 +38,7 @@ class ApiSdkCfg extends MY_Controller {
         }
 
         $arrRet = $this->ApiSdkModel->getSdkCfgByAppId($arrParams);
+		/*
 		if($arrRet){
 			foreach($arrRet as $key => $value){
 				if(array_key_exists('YEZI',$value['map'])){
@@ -51,6 +52,7 @@ class ApiSdkCfg extends MY_Controller {
 				}
 			}
 		}
+		 */
 		return $arrRet?$this->outJson($arrRet, ErrCode::OK) : $this->outJson([], ErrCode::ERR_SYSTEM);
     }
 }
